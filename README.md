@@ -1,103 +1,125 @@
-IntelliDB 🗣️ - A Natural Language Database Interface
-IntelliDB is a modern web application that bridges the gap between complex database queries and natural human language. It allows users to securely connect to their MySQL databases and ask questions in plain English, receiving instant SQL results and data tables. This tool is designed to empower team members of all technical levels to interact with data intuitively, without needing to write a single line of SQL.
+# IntelliDB 🗣️
 
-✨ Features
-Secure User Authentication: Full login and registration system with persistent user sessions, powered by Spring Security.
+![Java](https://img.shields.io/badge/Java-17-blue?logo=java&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.3.2-green?logo=spring&logoColor=white)
+![Thymeleaf](https://img.shields.io/badge/Thymeleaf-3.1-green?logo=thymeleaf&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-blue?logo=mysql&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-Encrypted Connection Management: Users can save, edit, and delete multiple database connections. Credentials are fully encrypted at rest using AES.
+> A modern web application that allows users to securely connect to their databases and interact with them using natural language.
 
-Natural Language to SQL: At its core, IntelliDB uses a Large Language Model (LLM) to translate questions like "show me the top 5 highest paid employees" into executable SQL queries.
+IntelliDB bridges the gap between complex database queries and human conversation. It empowers team members of all technical levels to explore data intuitively, without needing to write a single line of SQL.
 
-Schema-Aware Intelligence: The AI is provided with the full table schema (CREATE TABLE statements) to generate accurate, context-aware queries.
+---
 
-Interactive Dashboard: A sleek, dark-themed dashboard to manage connections and view database schemas.
+## 📋 Table of Contents
 
-Dynamic Query Interface: Features a schema viewer, a query history panel, and an interactive results table.
+- [✨ Features](#-features)
+- [📸 Screenshots](#-screenshots)
+- [🛠️ Tech Stack](#-tech-stack)
+- [🚀 Getting Started](#-getting-started)
+- [📞 Contact](#-contact)
+- [📄 License](#-license)
 
-Data Exploration Tools:
+---
 
-Table Previews: Click any table to see its structure and a preview of the first 10 rows.
+## ✨ Features
 
-Sortable Results: Click on any column header in the results table to sort the data.
+* **🔐 Secure User Authentication:** Full login/registration system with persistent user sessions, powered by Spring Security.
+* **💾 Encrypted Connection Management:** Save, edit, and delete multiple database connections. Credentials are fully encrypted at rest using AES.
+* **💬 Natural Language to SQL:** Uses a Large Language Model (LLM) to translate plain English questions into executable SQL queries.
+* **🧠 Schema-Aware Intelligence:** The AI is provided with the full table schema to generate accurate, context-aware queries.
+* **🖥️ Interactive Dashboard:** A sleek, dark-themed dashboard to manage connections and view database schemas.
+* **📊 Dynamic Query Interface:** Features a schema viewer, a query history panel, and an interactive results table.
+* **🔍 Data Exploration Tools:**
+    * **Table Previews:** Click any table to see its structure and a preview of its data.
+    * **Sortable Results:** Click on any column header in the results table to sort the data instantly.
+    * **Export to CSV:** Download any query result set as a CSV file with one click.
+* **🛡️ Built-in Security:** Includes a confirmation step for potentially destructive queries (e.g., `UPDATE`, `DELETE`) to prevent accidental data modification.
 
-Export to CSV: Download any query result set as a CSV file with a single click.
+---
 
-Built-in Security: Includes a confirmation step for potentially destructive queries (like UPDATE or DELETE) to prevent accidental data modification.
+## 📸 Screenshots
 
-📸 Screenshots
-Here's a look at the IntelliDB interface:
+#### Main Connections Dashboard
 
-Connections Dashboard
 
-Query Interface
+#### Interactive Query Dashboard
 
-🛠️ Tech Stack
-Backend: Java 17, Spring Boot, Spring Security, Spring Data JPA
 
-Database: H2 (for local user/app data), MySQL (for user-connected databases)
+#### Public Landing Page
 
-Frontend: Thymeleaf with Layout Dialect, HTML5, CSS3, JavaScript (Fetch API)
 
-AI: Google Gemini API
+---
 
-Build Tool: Apache Maven
+## 🛠️ Tech Stack
 
-🚀 Getting Started
+| Category   | Technology                                                                              |
+|------------|-----------------------------------------------------------------------------------------|
+| **Backend** | `Java 17`, `Spring Boot`, `Spring Security`, `Spring Data JPA`                            |
+| **Frontend** | `Thymeleaf` with Layout Dialect, `HTML5`, `CSS3`, `JavaScript (Fetch API)`               |
+| **Database** | `H2` (for local app data), `MySQL` (for user connections)                               |
+| **AI** | `Google Gemini API`                                                                     |
+| **Build** | `Apache Maven`                                                                          |
+
+---
+
+## 🚀 Getting Started
+
 Follow these instructions to get a local copy of IntelliDB up and running.
 
-Prerequisites
-Java Development Kit (JDK) 17 or later
+### Prerequisites
 
-Apache Maven
+* Java Development Kit (JDK) 17 or later
+* Apache Maven
+* Git
 
-Git
+### Installation & Setup
 
-Installation & Setup
-Clone the repository:
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/hemanth299/intellidb.git](https://github.com/hemanth299/intellidb.git)
+    cd intellidb
+    ```
 
-Bash
+2.  **Configure the application:**
+    Open the `src/main/resources/application.properties` file. You must provide your own secret keys for the application to function.
 
-git clone https://github.com/your-username/intellidb.git
-cd intellidb
-Configure the application:
-Open the src/main/resources/application.properties file. You need to provide your own secret keys for the application to function.
+    ```properties
+    # Your API key from Google AI Studio
+    gemini.api.key=YOUR_GOOGLE_GEMINI_API_KEY
 
-Properties
+    # A random 16-character string for encrypting passwords
+    encryption.secret.key=ThisIsA16CharKey
+    ```
 
-# Your API key from Google AI Studio
-gemini.api.key=YOUR_GOOGLE_GEMINI_API_KEY
+3.  **Run the application:**
+    Use Maven to build and run the Spring Boot application.
+    ```bash
+    mvn spring-boot:run
+    ```
+    The application will be running at `http://localhost:8080`.
 
-# A random 16-character string for encrypting passwords
-encryption.secret.key=ThisIsA16CharKey
-Run the application:
-Use Maven to build and run the Spring Boot application.
+### Usage
 
-Bash
+1.  Navigate to **http://localhost:8080**.
+2.  Click "Sign Up" to create a new account, then log in.
+3.  On the dashboard, click "Add Connection" to save the credentials for your MySQL database.
+4.  Click "Connect" on a saved connection to enter the query interface.
+5.  Ask questions in plain English and explore your data!
 
-mvn spring-boot:run
-The application will be running at http://localhost:8080.
+---
 
-usage
-Navigate to http://localhost:8080.
+## 📞 Contact
 
-You will be redirected to the login page. Click "Sign Up" to create a new account.
+**Hemanth Yerra**
 
-After logging in, you'll see the main connections dashboard.
+-   **Email:** hemanthyerra.dev@gmail.com
+-   **LinkedIn:** [linkedin.com/in/hemanth299](https://www.linkedin.com/in/hemanth299/)
+-   **GitHub:** [github.com/hemanth299](https://github.com/hemanth299)
 
-Click "Add Connection" to save the credentials for your MySQL database.
+---
 
-From the dashboard, click "Connect" on a saved connection to enter the query interface.
+## 📄 License
 
-Ask questions in the text box and get instant results!
-
-📞 Contact
-Hemanth Yerra
-
-Email: hemanthyerra.dev@gmail.com
-
-LinkedIn: linkedin.com/in/hemanth299
-
-GitHub: github.com/hemanth299
-
-📄 License
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License.
